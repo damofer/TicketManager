@@ -1,0 +1,17 @@
+{
+  "name": "ticketmanager",
+  "version": "1.0.0",
+  "description": "This a test made by David Mogollon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Mogollon",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.5",
+    "angular-route": "^1.6.5",
+    "express": "^4.15.3",
+    "mysql": "^2.13.0"
+  }
+}
