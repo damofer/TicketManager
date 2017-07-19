@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ticket</title>
+</head>
+<body>
+<h2>This the ticket view</h2>
+<div ng-repeat ="message in messages">
+	{{message.MESSAGE}}
+</div>
+<form id ="message_form">
+<textarea  placeholder="please write your message in here " name="message"></textarea>
+<button type="submit">send message</button>
+</form>
+</body>
+</html>

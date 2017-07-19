@@ -8,9 +8,17 @@
          $http.get(base_uri + '/getTicket/'+id)
          .then(callback);
       };
+      this.getTicketMessages = function (id,callback) {
+         $http.get(base_uri + '/getTicketMessages/'+id)
+         .then(callback);
+      };
       this.getAllTickets = function (callback) {
          $http.get(base_uri + '/getAllTickets')
          .then(callback);
+      };
+      this.addMessage = function (message,callback,err) {
+         $http.post(base_uri + '/addMessage',message )
+         .then(callback,err);
       };
     /*  this.getAllRecipes = function (callback) {
          $http.get(base_uri + '/api/recipes')
