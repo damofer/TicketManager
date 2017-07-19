@@ -1,0 +1,27 @@
+.dashboard{
+	display: flex;
+	flex: 1;
+	max-width: 700px;
+	&__table{
+		border-collapse: collapse;
+		width: 100%;
+		flex:1;
+		&__head{
+			tr{
+
+				th{padding: 10px;
+					text-align: center;
+					border: 1px solid black
+				}
+			}
+		}
+		&__body{
+			tr{ 
+				td{padding: 10px;
+					text-align: center;
+					border: 0.5px solid rgba(black,0.2);
+				}
+			}
+		}
+	}
+}

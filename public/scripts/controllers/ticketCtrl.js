@@ -7,7 +7,7 @@
 	$scope.getTicket = function(id) {
 
   	    dataService.getTicket(id,function(response){
-			$scope.ticket = response.data;		
+			$scope.ticket = response.data[0];		
 			console.log($scope.ticket);	
 			dataService.getTicketMessages(id,function(response){
 				$scope.messages = response.data;
@@ -35,7 +35,7 @@
 	    	
 			dataService.getTicketMessages(ticket_id,function(response){
 				$scope.messages = response.data;
-				$('#configform')[0].reset();
+				$('#message_form')[0].reset();
 				
 
 			});
@@ -58,6 +58,12 @@ $(document).ready(function(){
     		alert("no empty messages please ")
     	}else{
     	$scope.addMessage(message);
+
+    	$('.ticket__messages').stop().animate({
+		  scrollTop: $('.ticket__messages')[0].scrollHeight
+		}, 800);
+    	
+    	
     	}
     });
 })

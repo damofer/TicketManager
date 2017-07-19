@@ -1,0 +1,31 @@
+.header{
+  display: flex;
+  
+  max-height: 250px;
+  .header__nav{
+    display: flex;
+    flex:1;
+    background-color: rgba(black,0.3);
+    .header__nav__list{  
+      
+      display: flex;
+      flex:1;
+      flex-direction: row; 
+      list-style-type: none;  
+      padding: 10px;  
+      .list__item{
+        flex:1;
+        text-align: center;
+        .list__item__link{
+          
+          color: white;
+          font-weight: bold;
+          text-decoration: none;
+          &:hover{
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}

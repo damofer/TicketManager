@@ -1,0 +1,89 @@
+$break-small: 500px;
+.ticket{
+	display: flex;
+	flex: 1;
+	max-width: 700px;
+	flex-direction:column;
+	
+	align-self:center;
+	&__info{
+		display: flex;
+		flex-direction:row;
+		@media screen and (max-width: $break-small) {
+		  flex-direction:column;
+		  }
+		&__col{
+			display: flex;
+			flex:1;
+			flex-direction:column;
+			justify-content: space-around;
+			&__item{
+				display: flex;
+				flex-direction: row;
+				padding: 5px;
+				&__text{
+					flex: 1;
+					display: flex;
+					flex-direction: row;
+					justify-content: space-around;
+
+					h5{
+						flex: 1;
+						align-self: flex-start;
+						text-align:left;
+					}
+					p{
+						flex: 1;
+						text-align: left;
+						
+					}
+				}
+			}		
+			
+		}
+	}
+	&__messages{
+		border: 1px solid black;
+		height: 350px;
+
+		margin-top: 50px;
+		overflow-y: auto;
+
+		display: flex;
+		flex-direction:column;
+		&__item{
+			
+			
+			p{
+				word-break: break-word;
+				display: flex;
+				min-height: 20px;
+				margin: 2px 5px;
+				padding: 5px 15px;
+				max-width: 300px;
+				border:1px solid rgba(black,0.3);
+				border-radius: 10px;
+				min-width: 20px;
+				min-height: 30px;
+				align-items:center;
+			}
+			.owner{
+				margin-left: auto;
+				
+			}
+		}
+	}
+		
+	#message_form{
+		display: flex;
+		flex:1;
+		width: 100%;
+		textarea{
+			flex: 1;
+		}
+		button[type="submit"]{
+			padding: 2px 5px;
+		}
+	}
+
+}

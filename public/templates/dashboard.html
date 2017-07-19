@@ -1,15 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>dashboard</title>
-</head>
-<body>
 
-<div ng-repeat="ticket in ticketList">
-	<h3>{{ticket}}</h3>
+<!-- -->
+
+<div class="dashboard">
+<table class="dashboard__table">
+	<thead  class="dashboard__table__head">
+		<tr>
+			<th>Ticket ID</th>
+			<th>User ID</th>
+			<th>Ticket Owner</th>
+			<th>Ticket STATUS</th>
+			<th>Edit</th>
+		</tr>
+	</thead>
+	<tbody class="dashboard__table__body">
+
+		<tr  ng-repeat="ticket in ticketList">
+
+			<td>{{ticket.ID}}</td>
+			<td>{{ticket.USER_ID}}</td>			
+			<td>{{ticket.USERNAME}}</td>
+			<!-- <td>{{ticket.EMAIL}}</td> -->
+			<td>{{ticket.STATUS}}</td>
+			<td><a ng-href="#!/ticket/{{ticket.ID}}">View Ticket</a></td>
+
+		</tr>
+	</tbody>
+	
+</table>
+
 </div>
 
 
 
-</body>
-</html>

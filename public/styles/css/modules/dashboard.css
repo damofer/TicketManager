@@ -1,0 +1,25 @@
+.dashboard {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex: 1;
+      flex: 1;
+}
+
+.dashboard .dashboard__table {
+  border-collapse: collapse;
+  width: 100%;
+  -ms-flex: 1;
+      flex: 1;
+}
+
+.dashboard .dashboard__table .dashboard__table__head tr th {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.dashboard .dashboard__table .dashboard__table__body tr td {
+  padding: 10px;
+  text-align: center;
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
+}

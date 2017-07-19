@@ -1,16 +1,68 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Ticket</title>
-</head>
-<body>
-<h2>This the ticket view</h2>
-<div ng-repeat ="message in messages">
-	{{message.MESSAGE}}
+
+<div class="ticket">
+	<div class="ticket__info">
+		<div class="ticket__info__col">
+			<div class="ticket__info__col__item">
+				<div class="ticket__info__col__item__text">
+					<h5>Ticket ID : </h5>
+					<p>{{ticket.ID}}</p>
+				</div>
+			</div>
+			<div class="ticket__info__col__item">
+				<div class="ticket__info__col__item__text">
+				<h5>Ticket Status : </h5>
+				<p>{{ticket.STATUS}}</p>
+				</div>
+			</div>
+			<div class="ticket__info__col__item">
+				<div class="ticket__info__col__item__text">
+					<h5>Ticket Start Date : </h5>
+					<p>X</p>
+				</div>
+			</div>
+			
+			
+		</div>
+		<div class="ticket__info__col">
+			
+			<div class="ticket__info__col__item">
+				<div class="ticket__info__col__item__text">
+					<h5>Owner Email : </h5>
+					<p>{{ticket.EMAIL}}</p>
+				</div>
+			</div>
+			<div class="ticket__info__col__item">
+				<div class="ticket__info__col__item__text">
+					<h5>Owner ID : </h5>
+					<p>{{ticket.USER_ID}}</p>
+				</div>
+			</div>
+			<div class="ticket__info__col__item">
+				<div class="ticket__info__col__item__text">
+					<h5>Username :</h5>
+					<p>{{ticket.USERNAME}}</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+<!-- ng-class="{'owner': session.user_id == message.USER_ID }" -->
+	<div class="ticket__messages">
+		<div class="ticket__messages__item">
+			<p >Hola</p>
+		</div>
+		<div class="ticket__messages__item" ng-repeat ="message in messages">
+			<p class="owner">{{message.MESSAGE}}</p>
+		</div>
+	</div>
+
+
+
+
+	<form id ="message_form">
+		<textarea  placeholder="please write your message in here " name="message"></textarea>
+		<button type="submit">send message</button>	
+	</form>
+
 </div>
-<form id ="message_form">
-<textarea  placeholder="please write your message in here " name="message"></textarea>
-<button type="submit">send message</button>
-</form>
-</body>
-</html>
