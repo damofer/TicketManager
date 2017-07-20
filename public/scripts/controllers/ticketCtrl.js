@@ -23,7 +23,7 @@
 	$scope.addMessage = function (message) {
 
 		
-		var user_id = 1;
+		var user_id = 3;
 		
 		var obj ={
 			user_id: user_id,

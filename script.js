@@ -11,14 +11,10 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 app.use(express.static(__dirname +"/public"));
 // var connection = mysql.createConnection({
-var connection = mysql.createPool({
-	connectionLimit: 50,
-	// properties ...
-	host:'localhost',
-	user:'root',
-	password:'',
-	database:'ticketmanager'
-});
+
+var dbconfig = require('./config/database.js');
+dbconfig.connection.database = dbconfig.database;
+var connection = mysql.createPool(dbconfig.connection);
 
 
 require('./app/service_routes.js')(app, connection); // get The ticket DB queries
