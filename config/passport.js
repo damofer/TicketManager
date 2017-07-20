@@ -26,7 +26,7 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        connection.query("SELECT * FROM "+dbconfig.users_table+" WHERE ID = ? ",[id], function(err, rows){
+        connection.query("SELECT * FROM users WHERE ID = ? ",[id], function(err, rows){
             done(err, rows[0]);
         });
     });
@@ -40,36 +40,46 @@ module.exports = function(passport) {
     passport.use(
         'local-signup',
         new LocalStrategy({
-            // by default, local strategy uses username and password, we will override with email
-            usernameField : 'USERNAME',
-            passwordField : 'PASSWORD',
+           
+            usernameField : 'username',
+            passwordField : 'password',           
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
         function(req, username, password, done) {
-            // find a user whose email is the same as the forms email
+             var email =req.body.email;
+             var rol =req.body.rol;
+           
             // we are checking to see if the user trying to login already exists
-            connection.query("SELECT * FROM "+dbconfig.users_table+" WHERE username = ?",[username], function(err, rows) {
+
+            connection.query("SELECT * FROM users WHERE USERNAME = ?",[username], function(err, rows) {
                 if (err)
                     return done(err);
+                
                 if (rows.length) {
-                    return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
+                    // return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
+
+                    console.log("username taken already");
                 } else {
+
                     // if there is no user with that username
                     // create the user
                     var newUserMysql = {
                         username: username,
-                        password: bcrypt.hashSync(password, null, null)  // use the generateHash function in our user model
+                        password: bcrypt.hashSync(password, null, null),  // use the generateHash function in our user model
+                        email:email,
+                        rol:rol
                     };
+                    console.log(newUserMysql);
+                    var insertQuery = "INSERT INTO users (USERNAME, PASSWORD,EMAIL,ROL) values (?,?,?,?)";
 
-                    var insertQuery = "INSERT INTO "+dbconfig.users_table+" ( USERNAME, PASSWORD, ROL ) values (?,?,?)";
-
-                    connection.query(insertQuery,[newUserMysql.username, newUserMysql.password, 1],function(err, rows) {
+                    connection.query(insertQuery,[newUserMysql.username, newUserMysql.password, newUserMysql.email, newUserMysql.rol],function(err, rows) {
                         newUserMysql.id = rows.insertId;
 
                         return done(null, newUserMysql);
                     });
                 }
             });
+            
         })
     );
 
@@ -88,7 +98,7 @@ module.exports = function(passport) {
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
         function(req, username, password, done) { // callback with email and password from our form
-            connection.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows){
+            connection.query("SELECT * FROM users WHERE USERNAME = ?",[username], function(err, rows){
                 if (err)
                     return done(err);
                 if (!rows.length) {

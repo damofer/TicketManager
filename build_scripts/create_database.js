@@ -13,7 +13,7 @@ connection.query('\
 CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.users_table + '` (\
   `ID` int(11) NOT NULL,\
   `USERNAME` varchar(50) COLLATE utf8_bin NOT NULL,\
-  `PASSWORD` varchar(50) COLLATE utf8_bin NOT NULL,\
+  `PASSWORD` varchar(200) COLLATE utf8_bin NOT NULL,\
   `EMAIL` varchar(50) COLLATE utf8_bin NOT NULL,\
   `ROL` int(12) NOT NULL\
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;\
