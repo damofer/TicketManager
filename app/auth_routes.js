@@ -10,20 +10,24 @@ app.get('/isLoggedIn',authMiddleware ,function(req,res){
 			"email":req.user.EMAIL,
 			"rol":req.user.ROL
 		};
-		console.log(user);
-		return res.status(200).json(user);
+	
+		return res.status(200).send(user);
 
 });
 function authMiddleware(req,res,next){
 	// if user is authenticated in the session, carry on
-	if (req.isAuthenticated()){	
+	if (req.isAuthenticated()){
+		
 		
 		return next();
 		
-	}
+	}else{
 
 	// if they aren't redirect them to the home page
-	return res.redirect('/#!/login');
+
+	return res.status(200).send(null);
+
+	}
 }
 
 	// =====================================
@@ -111,8 +115,10 @@ function authMiddleware(req,res,next){
 	// =====================================
 	// LOGOUT ==============================
 	// =====================================
-	app.get('#!/logout', function(req, res) {
+	app.get('/logout', function(req, res) {
+
 		req.logout();
+		console.log("is Auth = " , req.isAuthenticated());
 		res.redirect('/#!/');
 	});
 };

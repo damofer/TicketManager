@@ -15,9 +15,16 @@
 	$scope.getAllTickets();
 
 	$scope.isLoggedIn = function(){
+
+
 		dataService.isLoggedIn(function(response){	
-		 	$scope.data = response;
-		 	alert($scope.data);
+			
+		 	if(response.data.id){
+		 		console.log(response.data.id);
+		 		
+		 	}else{
+		 		 window.location = "/";
+		 	}
 		 });
 	}
 	$scope.isLoggedIn();
