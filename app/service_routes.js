@@ -2,6 +2,7 @@ var dbconfig = require('../config/database.js');
 
 module.exports = function(app,connection) {
 
+
 app.get('/getTicket/:id',function(req,resp){
 	// about mysql
 	var id = req.params.id;

@@ -27,7 +27,7 @@ dbconfig.connection.database = dbconfig.database;
 var connection = mysql.createPool(dbconfig.connection);
 
 
-require('./app/service_routes.js')(app, connection); // get The ticket DB queries
+
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
@@ -38,12 +38,12 @@ app.use(bodyParser.urlencoded({// to support URL-encoded bodies
 }));
 
 
-app.use(express.static(__dirname +"/public"));//set public folder
+app.use(express.static(path.join(__dirname, 'public')));//set public folder
 /*app.set('view engine', 'ejs'); */// set up ejs for templating*/
 
 // required for passport
 app.use(session({
-	secret: 'vidyapathaisalwaysrunning',
+	secret: 'barranquilla',
 	resave: true,
 	saveUninitialized: true
  } )); // session secret
@@ -61,7 +61,11 @@ app.get('/vendor/angular-route.js', function(req, res) {
 });
 
 // routes ======================================================================
+
+
 require('./app/auth_routes.js')(app, passport); // load our auth_routes and pass in our app and fully configured passport
+
+require('./app/service_routes.js')(app, connection); // get The ticket DB queries
 
 app.listen(3000);
 console.log('Server running at Port : ' + 3000);

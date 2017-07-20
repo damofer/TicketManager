@@ -4,6 +4,10 @@
     .module('app')
   .service('dataService', function($http) {
   	  var base_uri = 'http://localhost:3000';
+      this.isLoggedIn = function (id,callback) {
+         $http.get(base_uri + '/isLoggedIn')
+         .then(callback);
+      };
       this.getTicket = function (id,callback) {
          $http.get(base_uri + '/getTicket/'+id)
          .then(callback);

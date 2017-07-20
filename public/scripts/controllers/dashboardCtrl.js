@@ -10,10 +10,17 @@
 	 	console.log($scope.ticketList);
 	 	
 	 });
-	}
+	};
 
 	$scope.getAllTickets();
 
+	$scope.isLoggedIn = function(){
+		dataService.isLoggedIn(function(response){	
+		 	$scope.data = response;
+		 	alert($scope.data);
+		 });
+	}
+	$scope.isLoggedIn();
 });
 
 })();

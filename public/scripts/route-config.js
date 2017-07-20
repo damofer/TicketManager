@@ -41,7 +41,7 @@
         data: 'add'
       })
       .otherwise({
-        redirectTo: '/login'
+        redirectTo: '/'
       });
   }
 })();
