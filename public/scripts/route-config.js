@@ -17,10 +17,16 @@
 
   function config($routeProvider) {
     $routeProvider
-      .when('/', {
+      
+      .when('/login', {
         controller: 'loginCtrl',
         controllerAs: 'vm',
         templateUrl: 'templates/login.html'
+      })
+      .when('/signup', {
+        controller: 'signupCtrl',
+        controllerAs: 'vm',
+        templateUrl: 'templates/signup.html'
       })
       .when('/ticket/:id', {
         controller: 'ticketCtrl',
@@ -35,7 +41,7 @@
         data: 'add'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/login'
       });
   }
 })();
