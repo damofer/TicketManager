@@ -20,8 +20,7 @@
 	</thead>
 	<tbody class="dashboard__table__body">
 
-		<tr ng-if="user.rol != 1 || user.id == ticket.USER_ID" 
-			ng-repeat="ticket in ticketList"
+		<tr ng-repeat="ticket in ticketList"
 			ng-show="ticket.STATUS == status || status == 'ALL'">
 
 			<td>{{ticket.ID}}</td>

@@ -103,6 +103,38 @@ app.get('/getTicketMessages/:id',function(req,resp){
 	});
 
 });
+app.get('/getTicketsFromUser/:id',function(req,resp){
+	// about mysql
+	 var id = req.params.id;
+	connection.getConnection(function(error,tempCont){
+		if(!!error){
+			tempCont.release();
+			console.log('Error');
+
+		}else{
+			console.log('Connected!');
+			var q = "SELECT \
+				  t.ID,\
+				  t.USER_ID,\
+				  SUBSTR(t.TIMESTAMP,1,10) AS DATE,\
+				  t.STATUS,\
+				  u.USERNAME,\
+				  u.EMAIL \
+				 FROM "+dbconfig.ticket_table+" AS t \
+				 INNER JOIN "+dbconfig.users_table+" AS u ON t.USER_ID = u.ID\
+				 WHERE t.USER_ID ="+id;
+			tempCont.query(q,function(error,rows,fields){
+				tempCont.release();
+				if(!!error){
+					console.log("Error with the query");
+				}else{
+					resp.json(rows);
+				}
+			})
+		}
+	});
+
+});
 app.post('/addMessage', function(req, res) {
     var message = req.body.message,
        	user_id = req.body.user_id;

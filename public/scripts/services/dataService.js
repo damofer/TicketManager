@@ -16,10 +16,15 @@
          $http.get(base_uri + '/getTicketMessages/'+id)
          .then(callback);
       };
+      this.getTicketsFromUser = function (id,callback) {
+         $http.get(base_uri + '/getTicketsFromUser/'+id)
+         .then(callback);
+      };
       this.getAllTickets = function (callback) {
          $http.get(base_uri + '/getAllTickets')
          .then(callback);
       };
+     
       this.addMessage = function (message,callback,err) {
          $http.post(base_uri + '/addMessage',message )
          .then(callback,err);
