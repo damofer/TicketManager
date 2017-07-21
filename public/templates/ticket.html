@@ -54,7 +54,7 @@
 
 	</div>
 
-	<div class="ticket__close_button">
+	<div ng-if="user.rol==2 || user.rol==3" class="ticket__close_button">
 		<button ng-click="closeTicket()">Close Ticket</button>
 	</div>
 		
