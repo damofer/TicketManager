@@ -6,7 +6,13 @@
 	width: 100%;
 	padding: 30px;
 	flex-direction:column;
-	
+	&__filter{
+		padding: 10px;
+		button{
+			margin:5px;
+			padding:5px;
+		}
+	}
 	&__table{
 		border-collapse: collapse;
 		width: 100%;

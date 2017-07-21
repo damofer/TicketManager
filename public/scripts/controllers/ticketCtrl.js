@@ -101,7 +101,7 @@
 
 		    	var message =$("textarea[name='message']")[0].value ;
 		    	if(message.length < 1){
-		    		alert("no empty messages please ")
+		    		//no empty messages allowed
 		    	}else{
 		    	$scope.addMessage(message);
 

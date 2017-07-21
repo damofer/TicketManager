@@ -71,7 +71,7 @@
 
 	<form id ="message_form">
 		<textarea  placeholder="please write your message in here " name="message"></textarea>
-		<button type="submit">send message</button>	
+		<button type="submit" ng-disabled="ticket.STATUS=='CLOSED'">send message</button>	
 	</form>
 
 </div>

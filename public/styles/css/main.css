@@ -156,6 +156,15 @@ ul {
       flex-direction: column;
 }
 
+.dashboard__filter {
+  padding: 10px;
+}
+
+.dashboard__filter button {
+  margin: 5px;
+  padding: 5px;
+}
+
 .dashboard__table {
   border-collapse: collapse;
   width: 100%;

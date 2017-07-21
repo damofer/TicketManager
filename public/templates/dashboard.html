@@ -6,8 +6,10 @@
 	<input type="radio" name="status" ng-model="status" value ="ACTIVE">Active
 	<input type="radio" name="status" ng-model="status" value ="CLOSED">Closed
 	<input type="radio" name="status" ng-model="status" value ="ALL"  ng-checked="true" >All
+	<button ng-if="user.rol==2 || user.rol==3" class="dashboard__filter__export" onClick ="$('#dashboard__table').tableExport({type:'pdf',escape:'false'});">Export to PDF</button>
 </div>
-<table class="dashboard__table">
+
+<table id="dashboard__table" class="dashboard__table">
 	<thead  class="dashboard__table__head">
 		<tr>
 			<th>Ticket ID</th>
