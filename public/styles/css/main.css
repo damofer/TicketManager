@@ -256,7 +256,7 @@ ul {
   -ms-flex-item-align: start;
       align-self: flex-start;
   text-align: left;
-  margin: 5px 10px;
+  margin: 10px 10px;
 }
 
 .ticket__info__col__item__text p {
@@ -267,6 +267,9 @@ ul {
       -ms-grid-row-align: center;
       align-self: center;
   font-size: 0.8rem;
+  margin-top: 10px;
+  max-height: 50px;
+  overflow-y: auto;
 }
 
 .ticket__close_button button {
