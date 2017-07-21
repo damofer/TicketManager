@@ -105,6 +105,8 @@ app.get('/getTicketMessages/:id',function(req,resp){
 });
 app.get('/getTicketsFromUser/:id',function(req,resp){
 	// about mysql
+	// can filter with req.user.ROL if needed in the server instead of passing id by param in front end
+
 	 var id = req.params.id;
 	connection.getConnection(function(error,tempCont){
 		if(!!error){
