@@ -30,6 +30,7 @@ ul {
 .main__container {
   display: -ms-flexbox;
   display: flex;
+  max-width: 800px;
   -ms-flex-pack: center;
       justify-content: center;
   -ms-flex-item-align: center;
