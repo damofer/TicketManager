@@ -24,6 +24,10 @@
          $http.post(base_uri + '/addMessage',message )
          .then(callback,err);
       };
+      this.addTicket = function (inquiry,callback,err) {
+         $http.post(base_uri + '/addTicket',inquiry )
+         .then(callback,err);
+      };
     /*  this.getAllRecipes = function (callback) {
          $http.get(base_uri + '/api/recipes')
          .then(callback);

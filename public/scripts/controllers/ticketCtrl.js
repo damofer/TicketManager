@@ -2,76 +2,162 @@
   'use strict';
   angular.module("app")
 .controller('ticketCtrl',function($scope,dataService,$location,$window, $routeParams,$route){
-	$scope.messages =[];
-	var ticket_id = $routeParams.id
-	$scope.getTicket = function(id) {
-
-  	    dataService.getTicket(id,function(response){
-			$scope.ticket = response.data[0];		
-			console.log($scope.ticket);	
-			dataService.getTicketMessages(id,function(response){
-				$scope.messages = response.data;
-				console.log($scope.messages);		
-
-			});
-			
-			
-		});
-
-
-	}
-	$scope.addMessage = function (message) {
-
+		$scope.user;
+		$scope.messages =[];
+		var ticket_id = $routeParams.id;
 		
-		var user_id = 3;
 		
-		var obj ={
-			user_id: user_id,
-			ticket_id: ticket_id,
-			message: message
-		}
-	    dataService.addMessage(obj,function(response){
-			
-	    	
-			dataService.getTicketMessages(ticket_id,function(response){
-				$scope.messages = response.data;
-				$('#message_form')[0].reset();
+		$scope.getTicket = function(id) {
+
+	  	    dataService.getTicket(id,function(response){
+				$scope.ticket = response.data[0];	
+
 				
+				dataService.getTicketMessages(id,function(response){
+					$scope.messages = response.data;
+					
+					
+						
 
+				});
+				
+				
 			});
+
+
+		}
+		$scope.addMessage = function (message) {
+
 			
+			var user_id = $scope.user.id;
 			
-		});
+			var obj ={
+				user_id: user_id,
+				ticket_id: ticket_id,
+				message: message
+			}
+		    dataService.addMessage(obj,function(response){
+				
+		    	
+				dataService.getTicketMessages(ticket_id,function(response){
+					$scope.messages = response.data;
+					$('#message_form')[0].reset();
+					
 
-   
-    }
+				});
+				
+				
+			});
 
-$(document).ready(function(){
-	 $scope.getTicket(ticket_id);
+	   
+	    }
+	    $scope.isLoggedIn = function(){
+			dataService.isLoggedIn(function(response){	
+				
+			 	if(response.data.id){
+			 		
+			 		$scope.user=response.data;
+			 	}else{
+			 		 window.location = "/";
+			 	}
+			 });
+		}
+		$scope.isLoggedIn();
 
-    $("#message_form").on('submit',function(evt){
-    	
-    	evt.preventDefault();
+		$scope.getMessages =function(ticket_id,currentMessageCount){
 
-    	var message =$("textarea[name='message']")[0].value ;
-    	if(message.length < 1){
-    		alert("no empty messages please ")
-    	}else{
-    	$scope.addMessage(message);
+			dataService.getTicketMessages(ticket_id,function(response){
+						if(response.data>currentMessageCount){
+							$('.ticket__messages').stop().animate({
+							  scrollTop: $('.ticket__messages')[0].scrollHeight
+							}, 800);
+						}
+						$scope.messages = response.data;
+						
+						
 
-    	$('.ticket__messages').stop().animate({
-		  scrollTop: $('.ticket__messages')[0].scrollHeight
-		}, 800);
-    	
-    	
-    	}
-    });
-})
+					});
+		}
+
+		$(document).ready(function(){
+			$scope.getTicket(ticket_id)
+		 	setInterval(function(){ $scope.getMessages(ticket_id,$scope.messages); }, 5000);
+
+		    $("#message_form").on('submit',function(evt){
+		    	$scope.getTicket(ticket_id)
+		    	evt.preventDefault();
+
+		    	
+
+		    	var message =$("textarea[name='message']")[0].value ;
+		    	if(message.length < 1){
+		    		alert("no empty messages please ")
+		    	}else{
+		    	$scope.addMessage(message);
+
+		    	$('.ticket__messages').stop().animate({
+				  scrollTop: $('.ticket__messages')[0].scrollHeight
+				}, 800);
+		    	
+		    	
+		    	}
+
+		    	$('#message_form')[0].reset();
+		    });
+		})
    
 	
-	/*$scope.type = $route.current.data;*/
 
 
-});
+})
+.controller('ticketCreationCtrl',function($scope,dataService,$location,$window, $routeParams,$route){
+	$scope.user;
+	 $scope.isLoggedIn = function(){
+			dataService.isLoggedIn(function(response){	
+				
+			 	if(response.data.id){
+			 		
+			 		$scope.user=response.data;
+			 		/*if($scope.user.ROL != 1)
+			 			window.location = "/";*/
+			 	}else{
+			 		 window.location = "/";
+			 	}
+			 });
+		}
+	$scope.addTicket = function (inquiry) {
+			
+		var user_id = $scope.user.id;
+		
+		var obj ={
+			user_id: user_id,			
+			inquiry: inquiry
+		}
+	    dataService.addTicket(obj,function(response){
+	    	
+			
+			 window.location = "/"
+			
+		});
 
-})();
+	   
+	}
+		$scope.isLoggedIn();
+
+		$(document).ready(function(){
+			
+		 	
+
+		    $("#ticket__creation__form").on('submit',function(evt){		    	
+		    	evt.preventDefault();
+
+		    	var inquiry = $('textarea[name="inquiry"]')[0].value;
+		    	$scope.addTicket(inquiry);
+
+		    
+
+		    	
+		    });
+		});
+
+})})();

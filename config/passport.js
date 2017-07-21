@@ -56,6 +56,7 @@ module.exports = function(passport) {
                     return done(err);
                 
                 if (rows.length) {
+                    console.log("username taken");
                     return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
 
                     
@@ -73,7 +74,7 @@ module.exports = function(passport) {
                     var insertQuery = "INSERT INTO users (USERNAME, PASSWORD,EMAIL,ROL) values (?,?,?,?)";
 
                     connection.query(insertQuery,[newUserMysql.username, newUserMysql.password, newUserMysql.email, newUserMysql.rol],function(err, rows) {
-                        newUserMysql.id = rows.insertId;
+                        newUserMysql.ID = rows.insertId;
 
                         return done(null, newUserMysql);
                     });

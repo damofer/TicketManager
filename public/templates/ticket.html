@@ -17,7 +17,13 @@
 			<div class="ticket__info__col__item">
 				<div class="ticket__info__col__item__text">
 					<h5>Ticket Start Date : </h5>
-					<p>X</p>
+					<p>{{ticket.DATE}}</p>
+				</div>
+			</div>
+			<div class="ticket__info__col__item">
+				<div class="ticket__info__col__item__text inquiry">
+					<h5>Inquiry: </h5>
+					<p>{{ticket.INQUIRY}}</p>
 				</div>
 			</div>
 			
@@ -49,11 +55,9 @@
 
 <!-- ng-class="{'owner': session.user_id == message.USER_ID }" -->
 	<div class="ticket__messages">
-		<div class="ticket__messages__item">
-			<p >Hola</p>
-		</div>
+		
 		<div class="ticket__messages__item" ng-repeat ="message in messages">
-			<p class="owner">{{message.MESSAGE}}</p>
+			<p ng-class="{owner : user.id == message.USER_ID}">{{message.MESSAGE}}<span class="ticket__messages__item__namespan">{{message.USERNAME}}</span></p>
 		</div>
 	</div>
 

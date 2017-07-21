@@ -2,23 +2,32 @@
 <!-- -->
 
 <div class="dashboard">
+<div class="dashboard__filter" >
+	<input type="radio" name="status" ng-model="status" value ="ACTIVE">Active
+	<input type="radio" name="status" ng-model="status" value ="CLOSED">Closed
+	<input type="radio" name="status" ng-model="status" value ="ALL"  ng-checked="true" >All
+</div>
 <table class="dashboard__table">
 	<thead  class="dashboard__table__head">
 		<tr>
 			<th>Ticket ID</th>
-			<th>User ID</th>
-			<th>Ticket Owner</th>
+			<th>Start Date</th>
+			<th ng-if="user.rol!=1">User ID</th>
+			<th  ng-if="user.rol!=1">Ticket Owner</th>
 			<th>Ticket STATUS</th>
 			<th>Edit</th>
 		</tr>
 	</thead>
 	<tbody class="dashboard__table__body">
 
-		<tr  ng-repeat="ticket in ticketList">
+		<tr ng-if="user.rol != 1 || user.id == ticket.USER_ID" 
+			ng-repeat="ticket in ticketList"
+			ng-show="ticket.STATUS == status || status == 'ALL'">
 
 			<td>{{ticket.ID}}</td>
-			<td>{{ticket.USER_ID}}</td>			
-			<td>{{ticket.USERNAME}}</td>
+			<td>{{ticket.DATE}}</th>
+			<td ng-if="user.rol!=1">{{ticket.USER_ID}}</td>			
+			<td  ng-if="user.rol!=1">{{ticket.USERNAME}}</td>
 			<!-- <td>{{ticket.EMAIL}}</td> -->
 			<td>{{ticket.STATUS}}</td>
 			<td><a ng-href="#!/ticket/{{ticket.ID}}">View Ticket</a></td>

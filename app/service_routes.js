@@ -17,7 +17,9 @@ app.get('/getTicket/:id',function(req,resp){
 			tempCont.query("SELECT\
 			 t.ID AS ID,\
 			 t.USER_ID AS USER_ID,\
+			 t.INQUIRY AS INQUIRY,\
 			 t.STATUS AS STATUS,\
+			 SUBSTR(t.TIMESTAMP,1,10) AS DATE,\
 			 u.USERNAME AS USERNAME, \
 			 u.EMAIL AS EMAIL \
 			 FROM `"+dbconfig.ticket_table+"` AS t \
@@ -48,6 +50,7 @@ app.get('/getAllTickets',function(req,resp){
 			tempCont.query("SELECT \
 				  t.ID,\
 				  t.USER_ID,\
+				  SUBSTR(t.TIMESTAMP,1,10) AS DATE,\
 				  t.STATUS,\
 				  u.USERNAME,\
 				  u.EMAIL \
@@ -123,6 +126,41 @@ app.post('/addMessage', function(req, res) {
 					
 				}else{
 					console.log("message inserted");
+					
+					
+					res.end(res.statusCode.toString());
+				}
+			})
+		}
+	});
+
+
+    
+});
+
+app.post('/addTicket', function(req, res) {
+    	var inquiry = req.body.inquiry;
+	       	user_id = req.body.user_id;
+	        
+
+        connection.getConnection(function(error,tempCont){
+		if(!!error){
+			tempCont.release();
+			console.log('Error');
+
+		}else{
+			
+			var q = "INSERT INTO `"+dbconfig.ticket_table+"` (USER_ID, INQUIRY ,STATUS )\
+					 VALUES ("+user_id+",'"+inquiry+"','ACTIVE')";
+			
+			tempCont.query(q,function(error,result){
+				tempCont.release();
+				if(!!error){
+					console.log(error);
+					res.end(res.statusCode.toString());
+					
+				}else{
+					console.log("ticket submited");
 					
 					
 					res.end(res.statusCode.toString());

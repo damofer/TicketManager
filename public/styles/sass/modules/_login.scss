@@ -1,0 +1,12 @@
+.login,
+.signup{
+	padding: 30px;
+	form{ 
+		
+		display: flex;
+		flex-direction:column;
+		input[name="username"]{} 
+		input[name="password"]{}		
+		input[type="submit"]{}
+	}
+}

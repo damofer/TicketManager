@@ -1,7 +1,11 @@
 .dashboard{
 	display: flex;
 	flex: 1;
-	max-width: 700px;
+	max-width: 1000px;
+	width: 100%;
+	padding: 30px;
+	flex-direction:column;
+	
 	&__table{
 		border-collapse: collapse;
 		width: 100%;

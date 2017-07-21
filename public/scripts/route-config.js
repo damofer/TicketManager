@@ -17,14 +17,18 @@
 
   function config($routeProvider) {
     $routeProvider
-      
+       .when('/', {
+        controller: 'mainCtrl',
+        controllerAs: 'vm',
+        templateUrl: 'templates/login.html'
+      })
       .when('/login', {
-        controller: 'loginCtrl',
+        controller: 'mainCtrl',
         controllerAs: 'vm',
         templateUrl: 'templates/login.html'
       })
       .when('/signup', {
-        controller: 'signupCtrl',
+        controller: 'mainCtrl',
         controllerAs: 'vm',
         templateUrl: 'templates/signup.html'
       })
@@ -32,6 +36,12 @@
         controller: 'ticketCtrl',
         controllerAs: 'vm',
         templateUrl: 'templates/ticket.html',
+        data: 'edit'
+      })
+      .when('/create', {
+        controller: 'ticketCreationCtrl',
+        controllerAs: 'vm',
+        templateUrl: 'templates/ticket_creation.html',
         data: 'edit'
       })
       .when('/dashboard', {

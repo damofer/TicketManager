@@ -1,7 +1,12 @@
 .header{
   display: flex;
+  background-color:$header_color;
+  flex:1;
+  max-height: 50px;
   
-  max-height: 250px;
+
+  
+  
   .header__nav{
     display: flex;
     flex:1;

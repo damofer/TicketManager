@@ -9,13 +9,26 @@ html,body{
 body{
 	display: flex;
 	flex-direction:column;
+	background-color:$main_container_color;
+	
+
 }
 ul{
 	text-decoration: none;
 }
 .main__container{
+	
+	
 	display:flex;
-	flex: 1;
+	
+	max-width: 1000px;
+	width: 100%;
 	justify-content:center;
+	align-self:center;
+	margin: auto;
 	overflow:auto;
+	background-color: white;
+	border-radius: 10px;
+
+	
 }

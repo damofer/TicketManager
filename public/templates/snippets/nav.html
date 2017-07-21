@@ -1,13 +1,20 @@
 <nav class="header__nav">
     <ul class="header__nav__list">
-      <li class="list__item">
+
+      <li ng-if="user" class="list__item">
           <a href="#!/dashboard" class="list__item__link">Tickets</a>
       </li>
-      <li class="list__item">
+      <li ng-if="user.rol==1" class="list__item">
           <a href="#!/create" class="list__item__link">Create Ticket</a>
       </li>
-      <li class="list__item">
+      <li ng-if="user" class="list__item">
           <a href="/logout" class="list__item__link">Logout</a>
+      </li>
+      <li ng-if="user==undefined" class="list__item">
+          <a href="#!/login" class="list__item__link">Log In</a>
+      </li>
+      <li ng-if="user==undefined" class="list__item">
+          <a href="#!/signup" class="list__item__link">Sign Up</a>
       </li>
     </ul> 
 </nav>

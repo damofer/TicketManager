@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-07-2017 a las 02:57:34
+-- Tiempo de generación: 21-07-2017 a las 04:21:50
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 5.6.25
 
@@ -43,17 +43,10 @@ CREATE TABLE `messages` (
 CREATE TABLE `tickets` (
   `ID` int(11) NOT NULL,
   `USER_ID` int(11) NOT NULL,
+  `INQUIRY` varchar(2000) COLLATE utf8_bin NOT NULL,
   `STATUS` varchar(20) COLLATE utf8_bin NOT NULL,
   `TIMESTAMP` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Volcado de datos para la tabla `tickets`
---
-
-INSERT INTO `tickets` (`ID`, `USER_ID`, `STATUS`, `TIMESTAMP`) VALUES
-(1, 1, 'active', '2017-07-19 00:03:41'),
-(2, 2, 'active', '2017-07-19 00:03:41');
 
 -- --------------------------------------------------------
 
@@ -64,18 +57,10 @@ INSERT INTO `tickets` (`ID`, `USER_ID`, `STATUS`, `TIMESTAMP`) VALUES
 CREATE TABLE `users` (
   `ID` int(11) NOT NULL,
   `USERNAME` varchar(50) COLLATE utf8_bin NOT NULL,
-  `PASSWORD` varchar(50) COLLATE utf8_bin NOT NULL,
+  `PASSWORD` varchar(200) COLLATE utf8_bin NOT NULL,
   `EMAIL` varchar(50) COLLATE utf8_bin NOT NULL,
   `ROL` int(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Volcado de datos para la tabla `users`
---
-
-INSERT INTO `users` (`ID`, `USERNAME`, `PASSWORD`, `EMAIL`, `ROL`) VALUES
-(1, 'damofer', 'asd', 'damofer2004@hotmail.com', 1),
-(2, 'dmogollon', 'asd', 'dmogollon@uninorte.edu.co', 2);
 
 --
 -- Índices para tablas volcadas
@@ -115,29 +100,12 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT de la tabla `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `messages`
---
-ALTER TABLE `messages`
-  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`TICKET_ID`) REFERENCES `tickets` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `tickets`
---
-ALTER TABLE `tickets`
-  ADD CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
