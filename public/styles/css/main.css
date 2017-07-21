@@ -239,6 +239,10 @@ ul {
   padding: 5px;
 }
 
+.ticket__info__col__item .inquiry p {
+  overflow-y: auto;
+}
+
 .ticket__info__col__item__text {
   -ms-flex: 1;
       flex: 1;
@@ -269,7 +273,6 @@ ul {
   font-size: 0.8rem;
   margin-top: 10px;
   max-height: 50px;
-  overflow-y: auto;
 }
 
 .ticket__close_button button {
