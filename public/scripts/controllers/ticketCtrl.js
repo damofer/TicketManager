@@ -35,7 +35,7 @@
 				user_id: user_id,
 				ticket_id: ticket_id,
 				message: message
-			}
+			};
 		    dataService.addMessage(obj,function(response){
 				
 		    	
@@ -78,9 +78,19 @@
 
 					});
 		}
+		$scope.closeTicket = function(){
+			var obj ={
+				ticket_id:ticket_id
+			};
+			dataService.closeTicket(obj,function(response){
+					$scope.getTicket(ticket_id);					
+						
 
+					});
+		}
 		$(document).ready(function(){
 			$scope.getTicket(ticket_id)
+			/*this will allow a chat effect*/
 		 	setInterval(function(){ $scope.getMessages(ticket_id,$scope.messages); }, 5000);
 
 		    $("#message_form").on('submit',function(evt){

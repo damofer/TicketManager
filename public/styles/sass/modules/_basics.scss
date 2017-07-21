@@ -1,6 +1,7 @@
 *{
 	margin:0;
 	padding:0;
+	font-family: $main_font;
 }
 html,body{
 	width:100%;
@@ -10,6 +11,7 @@ body{
 	display: flex;
 	flex-direction:column;
 	background-color:$main_container_color;
+	overflow: hidden;
 	
 
 }
@@ -21,8 +23,8 @@ ul{
 	
 	display:flex;
 	
-	max-width: 1000px;
-	width: 100%;
+	
+	
 	justify-content:center;
 	align-self:center;
 	margin: auto;

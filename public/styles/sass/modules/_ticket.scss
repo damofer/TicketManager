@@ -3,15 +3,18 @@
 	display: flex;
 	flex: 1;
 	width:100%;
+	max-height:500px;
 	
 	flex-direction:column;
 	
-    padding: 50px;
+    padding: 10px;
    
 	width: 100%;
 	
 	align-self:center;
 	&__info{
+		max-height: 250px;
+   		overflow: auto;
 		display: flex;
 		flex-direction:row;
 		@media screen and (max-width: $break-small) {
@@ -36,10 +39,13 @@
 						flex: 1;
 						align-self: flex-start;
 						text-align:left;
+						margin: 5px 10px;
 					}
 					p{
 						flex: 1;
 						text-align: left;
+						align-self:center;
+						font-size: 0.8rem;
 						
 					}
 				}
@@ -47,11 +53,20 @@
 			
 		}
 	}
+	&__close_button{
+		button{
+			padding: 5px 10px;
+		    background: aliceblue;
+		    border: 1px solid;
+		    border-radius: 10px;
+	    }	
+	}
 	&__messages{
 		border: 1px solid black;
-		height: 350px;
+		height: 300px;
 
-		margin-top: 50px;
+
+		margin-top: 10px;
 		overflow-y: auto;
 
 		display: flex;
@@ -94,10 +109,13 @@
 	}
 		
 	#message_form{
+		margin:5px 0;
 		display: flex;
 		flex:1;
 		width: 100%;
 		textarea{
+			border-radius: 5px;
+			padding: 5px;
 			flex: 1;
 		}
 		button[type="submit"]{
@@ -106,3 +124,4 @@
 	}
 
 }
+

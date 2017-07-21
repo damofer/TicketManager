@@ -7,7 +7,7 @@ module.exports = {
         'password': ''
        
     },
-	'database': 'ticketmanager',
+	'database': 'ticketmanagerx',
     'users_table': 'users',
     'message_table':'messages',
     'ticket_table':'tickets',

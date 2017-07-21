@@ -39,7 +39,7 @@ app.use(bodyParser.urlencoded({// to support URL-encoded bodies
 
 
 app.use(express.static(path.join(__dirname, 'public')));//set public folder
-/*app.set('view engine', 'ejs'); */// set up ejs for templating*/
+
 
 // required for passport
 app.use(session({
