@@ -29,26 +29,18 @@
 		dataService.isLoggedIn(function(response){	
 			
 		 	if(response.data.id){
-		 		console.log(response.data.id);
+		 		
 		 		$scope.user=response.data;
 		 		console.log($scope.user);
+		 		$scope.getAllTickets();
 		 	}else{
 		 		 window.location = "/";
 		 	}
 		 });
 	}
 	$scope.isLoggedIn();
-	$(document).ready(function(){
-		if($scope.user){
-			if($scope.user.rol === 2 || $scope.user.rol === 3){
-				$scope.getAllTickets();
-			}else{
-				if($scope.user.rol === 1 )
-					$scope.getTicketsFromUser($scope.user.id);
-			}
-		}
 
-	});
+
 	
 });
 
