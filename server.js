@@ -9,7 +9,7 @@ var express = require('express'),
 	morgan = require('morgan'),
 	passport = require('passport'),
 	flash    = require('connect-flash'),
-	port = process.env.PORT || 3000;
+	port = process.env.PORT || 8080;
 
 var app = express();
 

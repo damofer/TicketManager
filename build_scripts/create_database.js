@@ -6,7 +6,7 @@ var dbconfig = require('../config/database.js');
 var connection = mysql.createConnection(dbconfig.connection);
 
 //db creation
-// connection.query('CREATE DATABASE ' + dbconfig.database);
+connection.query('CREATE DATABASE ' + dbconfig.database);
 
 //table structures
 connection.query('\
