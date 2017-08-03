@@ -8,7 +8,7 @@ module.exports = function(app,connection) {
 		var id = req.params.id;
 		connection.getConnection(function(error,tempCont){
 			if(!!error){
-				tempCont.release();
+				// tempCont.release();
 				console.log('Error');
 
 			}else{
@@ -26,7 +26,8 @@ module.exports = function(app,connection) {
 				 INNER JOIN `"+dbconfig.users_table+"`AS u ON t.USER_ID = u.ID \
 				 WHERE t.ID = "+id,
 				 function(error,rows,fields){
-					tempCont.release();
+				 	console.log('Error');
+					// tempCont.release();
 					if(!!error){
 						console.log("Error with the query");
 					}else{
