@@ -3,7 +3,7 @@
     angular
     .module('app')
   .service('dataService', function($http) {
-  	  var base_uri = 'http://localhost:3000';
+  	  var base_uri = 'https://siap-ticketmanager.herokuapp.com';
       this.isLoggedIn = function (callback) {
          $http.get(base_uri + '/isLoggedIn')
          .then(callback);
