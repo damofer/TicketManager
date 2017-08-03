@@ -8,7 +8,8 @@ var express = require('express'),
 	cookieParser = require('cookie-parser'),
 	morgan = require('morgan'),
 	passport = require('passport'),
-	flash    = require('connect-flash')
+	flash    = require('connect-flash'),
+	port = process.env.PORT || 3000;
 
 var app = express();
 
@@ -67,5 +68,5 @@ require('./app/auth_routes.js')(app, passport); // load our auth_routes and pass
 
 require('./app/service_routes.js')(app, connection); // get The ticket DB queries
 
-app.listen(3000);
-console.log('Server running at Port : ' + 3000);
+app.listen(port);
+console.log('Server running at Port : ' + port);
